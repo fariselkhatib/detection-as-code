@@ -1,0 +1,29 @@
+{
+  "tp": [
+    {
+      "eventSource": "cloudtrail.amazonaws.com",
+      "eventName": "StopLogging",
+      "sourceIPAddress": "198.51.100.23"
+    },
+    {
+      "eventSource": "guardduty.amazonaws.com",
+      "eventName": "DeleteDetector",
+      "sourceIPAddress": "198.51.100.23"
+    }
+  ],
+  "fp": [
+    {
+      "eventSource": "cloudtrail.amazonaws.com",
+      "eventName": "StopLogging",
+      "errorCode": "AccessDenied"
+    },
+    {
+      "eventSource": "cloudtrail.amazonaws.com",
+      "eventName": "StartLogging"
+    },
+    {
+      "eventSource": "guardduty.amazonaws.com",
+      "eventName": "ListDetectors"
+    }
+  ]
+}

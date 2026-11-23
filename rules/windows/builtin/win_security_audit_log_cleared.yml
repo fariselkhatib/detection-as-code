@@ -1,0 +1,23 @@
+title: Security Audit Log Cleared
+id: 23cdb5ba-426d-4ec6-93a3-8aef46be5b60
+status: test
+description: |
+  Detects Event ID 1102, written when the Security log is cleared. Attackers clear logs to
+  remove evidence; legitimate clearing should be rare and change-controlled.
+references:
+  - https://attack.mitre.org/techniques/T1070/001/
+author: Faris Elkhatib
+date: 2026-11-23
+tags:
+  - attack.defense-evasion
+  - attack.t1070.001
+logsource:
+  product: windows
+  service: security
+detection:
+  selection:
+    EventID: 1102
+  condition: selection
+falsepositives:
+  - Planned log maintenance or system rebuilds.
+level: high

@@ -1,0 +1,35 @@
+{
+  "tp": [
+    {
+      "Image": "C:\\Windows\\System32\\rundll32.exe",
+      "CommandLine": "rundll32.exe C:\\windows\\System32\\comsvcs.dll, MiniDump 624 C:\\temp\\l.dmp full",
+      "ParentImage": "C:\\Windows\\explorer.exe",
+      "User": "LAB\\jdoe",
+      "Computer": "WS-FIN-07.lab.example"
+    },
+    {
+      "Image": "C:\\Windows\\Temp\\r.exe",
+      "CommandLine": "r.exe comsvcs.dll #24 624 C:\\temp\\l.dmp full",
+      "ParentImage": "C:\\Windows\\explorer.exe",
+      "User": "LAB\\jdoe",
+      "Computer": "WS-FIN-07.lab.example",
+      "OriginalFileName": "RUNDLL32.EXE"
+    }
+  ],
+  "fp": [
+    {
+      "Image": "C:\\Windows\\System32\\rundll32.exe",
+      "CommandLine": "rundll32.exe shell32.dll,Control_RunDLL desk.cpl",
+      "ParentImage": "C:\\Windows\\explorer.exe",
+      "User": "LAB\\jdoe",
+      "Computer": "WS-FIN-07.lab.example"
+    },
+    {
+      "Image": "C:\\Windows\\System32\\procdump.exe",
+      "CommandLine": "procdump -ma 1234 app.dmp",
+      "ParentImage": "C:\\Windows\\explorer.exe",
+      "User": "LAB\\jdoe",
+      "Computer": "WS-FIN-07.lab.example"
+    }
+  ]
+}

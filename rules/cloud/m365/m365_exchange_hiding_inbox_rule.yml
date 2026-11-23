@@ -1,0 +1,30 @@
+title: Inbox Rule Moves Mail to RSS or Conversation History
+id: 0676c6df-955b-48ae-96be-9959c5b1b25e
+status: test
+description: |
+  Detects new or modified inbox rules that move mail into folders users rarely open.
+  A signature move in business email compromise to hide replies from the real mailbox owner.
+references:
+  - https://attack.mitre.org/techniques/T1564/008/
+author: Faris Elkhatib
+date: 2026-11-23
+tags:
+  - attack.defense-evasion
+  - attack.t1564.008
+logsource:
+  product: m365
+  service: exchange
+detection:
+  selection_op:
+    Operation:
+      - 'New-InboxRule'
+      - 'Set-InboxRule'
+  selection_folder:
+    Parameters|contains:
+      - 'RSS Subscriptions'
+      - 'RSS Feeds'
+      - 'Conversation History'
+  condition: all of selection_*
+falsepositives:
+  - Users who genuinely file newsletters into RSS folders. Rare.
+level: high

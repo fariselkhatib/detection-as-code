@@ -1,0 +1,29 @@
+{
+  "tp": [
+    {
+      "EventID": 7045,
+      "Provider_Name": "Service Control Manager",
+      "ServiceName": "PSEXESVC",
+      "ImagePath": "%SystemRoot%\\PSEXESVC.exe"
+    },
+    {
+      "EventID": 7045,
+      "Provider_Name": "Service Control Manager",
+      "ServiceName": "UpdSvc",
+      "ImagePath": "C:\\Windows\\PSEXESVC.exe"
+    }
+  ],
+  "fp": [
+    {
+      "EventID": 7045,
+      "Provider_Name": "Service Control Manager",
+      "ServiceName": "Sysmon64",
+      "ImagePath": "C:\\Windows\\Sysmon64.exe"
+    },
+    {
+      "EventID": 7036,
+      "Provider_Name": "Service Control Manager",
+      "ServiceName": "PSEXESVC"
+    }
+  ]
+}

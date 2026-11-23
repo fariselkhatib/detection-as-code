@@ -1,0 +1,36 @@
+title: Office Application Spawns Encoded PowerShell
+id: 6f207942-5349-4ccf-8bda-c20d2131d432
+status: test
+description: |
+  Detects Word, Excel, PowerPoint, or Outlook launching PowerShell with an encoded command,
+  the classic malicious-macro execution chain.
+references:
+  - https://attack.mitre.org/techniques/T1059/001/
+  - https://attack.mitre.org/techniques/T1566/001/
+author: Faris Elkhatib
+date: 2026-11-23
+tags:
+  - attack.execution
+  - attack.t1059.001
+  - attack.initial-access
+  - attack.t1566.001
+logsource:
+  category: process_creation
+  product: windows
+detection:
+  selection_parent:
+    ParentImage|endswith:
+      - '\winword.exe'
+      - '\excel.exe'
+      - '\powerpnt.exe'
+      - '\outlook.exe'
+  selection_child:
+    Image|endswith:
+      - '\powershell.exe'
+      - '\pwsh.exe'
+  selection_encoded:
+    CommandLine|re: '(?i)\s-e(nc|ncodedcommand|c)?\s'
+  condition: all of selection_*
+falsepositives:
+  - Office add-ins that shell out to PowerShell. Rarely with -EncodedCommand.
+level: high

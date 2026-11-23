@@ -1,0 +1,26 @@
+{
+  "tp": [
+    {
+      "Operation": "New-InboxRule",
+      "UserId": "dana@lab.example",
+      "Parameters": "[{\"Name\": \"Name\", \"Value\": \".\"}, {\"Name\": \"MoveToFolder\", \"Value\": \"RSS Subscriptions\"}]"
+    },
+    {
+      "Operation": "Set-InboxRule",
+      "UserId": "dana@lab.example",
+      "Parameters": "[{\"Name\": \"MoveToFolder\", \"Value\": \"Conversation History\"}]"
+    }
+  ],
+  "fp": [
+    {
+      "Operation": "New-InboxRule",
+      "UserId": "ravi@lab.example",
+      "Parameters": "[{\"Name\": \"MoveToFolder\", \"Value\": \"Newsletters\"}]"
+    },
+    {
+      "Operation": "MailItemsAccessed",
+      "UserId": "dana@lab.example",
+      "Parameters": "RSS Subscriptions"
+    }
+  ]
+}

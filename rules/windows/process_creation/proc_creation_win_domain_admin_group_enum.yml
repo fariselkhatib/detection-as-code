@@ -1,0 +1,34 @@
+title: Domain Admins Group Enumeration via Net
+id: 2722413f-5abf-4508-9e02-5d9c310c3de7
+status: test
+description: |
+  Detects net.exe / net1.exe querying privileged domain groups. Common early discovery step
+  after initial access. Noisy on its own, useful in correlation.
+references:
+  - https://attack.mitre.org/techniques/T1069/002/
+author: Faris Elkhatib
+date: 2026-11-23
+tags:
+  - attack.discovery
+  - attack.t1069.002
+logsource:
+  category: process_creation
+  product: windows
+detection:
+  selection_img:
+    Image|endswith:
+      - '\net.exe'
+      - '\net1.exe'
+  selection_cmd:
+    CommandLine|contains|all:
+      - 'group'
+      - '/do'
+  selection_group:
+    CommandLine|contains:
+      - 'domain admins'
+      - 'enterprise admins'
+      - 'schema admins'
+  condition: all of selection_*
+falsepositives:
+  - Admins and helpdesk staff checking group membership. Filter known admin workstations or accounts.
+level: low

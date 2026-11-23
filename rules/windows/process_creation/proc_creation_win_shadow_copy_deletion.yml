@@ -1,0 +1,34 @@
+title: Volume Shadow Copy Deletion or Resize
+id: 7172f955-b53e-4c33-88fe-046c994c566f
+status: test
+description: |
+  Detects deletion of shadow copies or shrinking shadow storage to purge them, almost
+  always seen right before ransomware encryption.
+references:
+  - https://attack.mitre.org/techniques/T1490/
+author: Faris Elkhatib
+date: 2026-11-23
+tags:
+  - attack.impact
+  - attack.t1490
+logsource:
+  category: process_creation
+  product: windows
+detection:
+  selection_vssadmin:
+    Image|endswith: '\vssadmin.exe'
+    CommandLine|contains:
+      - 'delete shadows'
+      - 'resize shadowstorage'
+  selection_wmic:
+    Image|endswith: '\wmic.exe'
+    CommandLine|contains|all:
+      - 'shadowcopy'
+      - 'delete'
+  selection_wbadmin:
+    Image|endswith: '\wbadmin.exe'
+    CommandLine|contains: 'delete catalog'
+  condition: 1 of selection_*
+falsepositives:
+  - Very rare. Some backup products resize shadow storage; they do not usually delete all shadows.
+level: critical

@@ -1,0 +1,41 @@
+{
+  "tp": [
+    {
+      "Image": "C:\\Windows\\System32\\vssadmin.exe",
+      "CommandLine": "vssadmin.exe Delete Shadows /All /Quiet",
+      "ParentImage": "C:\\Windows\\explorer.exe",
+      "User": "LAB\\jdoe",
+      "Computer": "WS-FIN-07.lab.example"
+    },
+    {
+      "Image": "C:\\Windows\\System32\\wbem\\WMIC.exe",
+      "CommandLine": "wmic shadowcopy delete /nointeractive",
+      "ParentImage": "C:\\Windows\\explorer.exe",
+      "User": "LAB\\jdoe",
+      "Computer": "WS-FIN-07.lab.example"
+    },
+    {
+      "Image": "C:\\Windows\\System32\\vssadmin.exe",
+      "CommandLine": "vssadmin resize shadowstorage /for=C: /on=C: /maxsize=401MB",
+      "ParentImage": "C:\\Windows\\explorer.exe",
+      "User": "LAB\\jdoe",
+      "Computer": "WS-FIN-07.lab.example"
+    }
+  ],
+  "fp": [
+    {
+      "Image": "C:\\Windows\\System32\\vssadmin.exe",
+      "CommandLine": "vssadmin list shadows",
+      "ParentImage": "C:\\Windows\\explorer.exe",
+      "User": "LAB\\jdoe",
+      "Computer": "WS-FIN-07.lab.example"
+    },
+    {
+      "Image": "C:\\Windows\\System32\\wbem\\WMIC.exe",
+      "CommandLine": "wmic shadowcopy list brief",
+      "ParentImage": "C:\\Windows\\explorer.exe",
+      "User": "LAB\\jdoe",
+      "Computer": "WS-FIN-07.lab.example"
+    }
+  ]
+}

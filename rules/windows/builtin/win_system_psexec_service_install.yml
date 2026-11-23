@@ -1,0 +1,29 @@
+title: PsExec Service Installed
+id: b9f63809-4811-4da2-836b-dcbaaef836df
+status: test
+description: |
+  Detects Event ID 7045 for the PsExec service (or a renamed PsExec service via its
+  image path), indicating remote execution against this host.
+references:
+  - https://attack.mitre.org/techniques/T1569/002/
+author: Faris Elkhatib
+date: 2026-11-23
+tags:
+  - attack.execution
+  - attack.t1569.002
+  - attack.lateral-movement
+  - attack.t1021.002
+logsource:
+  product: windows
+  service: system
+detection:
+  selection:
+    EventID: 7045
+    Provider_Name: 'Service Control Manager'
+  selection_psexec:
+    - ServiceName: 'PSEXESVC'
+    - ImagePath|endswith: '\PSEXESVC.exe'
+  condition: selection and selection_psexec
+falsepositives:
+  - Administrators using PsExec for legitimate remote administration.
+level: medium

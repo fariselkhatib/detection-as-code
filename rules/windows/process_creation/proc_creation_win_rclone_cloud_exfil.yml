@@ -1,0 +1,33 @@
+title: Rclone Copy or Sync to a Cloud Remote
+id: be215055-009b-4ccd-be5d-c334c2338d9c
+status: test
+description: |
+  Detects rclone pushing data to a remote. Rclone is a favorite exfiltration tool for
+  ransomware crews because it is signed, fast, and supports dozens of cloud providers.
+  Also catches renamed binaries via the OriginalFileName / Description fields.
+references:
+  - https://attack.mitre.org/techniques/T1567/002/
+author: Faris Elkhatib
+date: 2026-11-23
+tags:
+  - attack.exfiltration
+  - attack.t1567.002
+logsource:
+  category: process_creation
+  product: windows
+detection:
+  selection_img:
+    - Image|endswith: '\rclone.exe'
+    - OriginalFileName: 'rclone.exe'
+    - Description: 'Rsync for cloud storage'
+  selection_cmd:
+    CommandLine|contains:
+      - ' copy '
+      - ' sync '
+      - ' move '
+  filter_local_only:
+    CommandLine|contains: ' --dry-run'
+  condition: all of selection_* and not 1 of filter_*
+falsepositives:
+  - Backup jobs that legitimately use rclone. Baseline the parent process and destination remote, then filter.
+level: high
